@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oModelTest {
 
-    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "MakersAndMortalsTest",
+    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "makersandmortalstest",
             null, null, new PostgresQuirks() {
         {
             // make sure we use default UUID converter.
@@ -30,7 +30,7 @@ class Sql2oModelTest {
     @BeforeAll
     static void setUpClass() {
         BasicConfigurator.configure();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/MakersAndMortalsTest", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/makersandmortalstest", null, null).load();
         flyway.migrate();
 
     }
@@ -43,7 +43,7 @@ class Sql2oModelTest {
     @AfterEach
     void tearDown() {
         Connection conn = sql2o.beginTransaction();
-        conn.createQuery("TRUNCATE TABLE posts")
+        conn.createQuery("TRUNCATE TABLE players")
                 .executeUpdate();
         conn.commit();
     }
