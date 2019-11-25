@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oModelTest {
 
-    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "acebook-test",
+    Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/" + "MakersAndMortalsTest",
             null, null, new PostgresQuirks() {
         {
             // make sure we use default UUID converter.
@@ -30,20 +30,14 @@ class Sql2oModelTest {
     @BeforeAll
     static void setUpClass() {
         BasicConfigurator.configure();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/acebook-test", null, null).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/MakersAndMortalsTest", null, null).load();
         flyway.migrate();
 
     }
     @BeforeEach
     void setUp() {
         Connection conn = sql2o.beginTransaction();
-        conn.createQuery("insert into posts(post_id, title, content) VALUES (:post_id, :title, :content)")
-                .addParameter("post_id", id)
-                .addParameter("title", "example title")
-                .addParameter("content", "example content")
-                .executeUpdate();
 
-        conn.commit();
     }
 
     @AfterEach

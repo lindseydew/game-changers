@@ -1,5 +1,7 @@
-create table posts(
- post_id VARCHAR,
- title VARCHAR,
- content VARCHAR
+create table players(
+ user_id VARCHAR,
+ user_name VARCHAR,
+ name VARCHAR,
+ password VARCHAR,
+ high_score VARCHAR
 )
