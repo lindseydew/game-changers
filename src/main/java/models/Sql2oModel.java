@@ -50,10 +50,10 @@ public class Sql2oModel implements Model {
         try (Connection conn = sql2o.beginTransaction()) {
             conn.createQuery("insert into players(user_id, user_name, name, password, high_score) VALUES (:user_id, :user_name, :name, :password, :high_score)")
                     .addParameter("user_id", user_id)
-                    .addParameter("user_name", "example username")
-                    .addParameter("name", "example full name")
-                    .addParameter("password", "example password")
-                    .addParameter("high_score", 0)
+                    .addParameter("user_name", username)
+                    .addParameter("name", full_name)
+                    .addParameter("password", password)
+                    .addParameter("high_score", high_score)
                     .executeUpdate();
             conn.commit();
         }
