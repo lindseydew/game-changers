@@ -52,7 +52,7 @@ public class Main {
         }, new VelocityTemplateEngine());
 
         get("/battle", (req, res) ->{
-            Player player = new Player("Adam", 100,10,20,"true" );
+            Player player = new Player("Adam", 100,10,20,"true", 0 );
             HashMap battle = new HashMap();
             battle.put("player", player);
             System.out.println(battle.get("player"));
