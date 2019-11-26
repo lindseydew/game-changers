@@ -15,17 +15,6 @@ public class Sql2oModel implements Model {
 
     }
 
-    @Override
-    public UUID createPost(String title, String content) {
-        //TODO - implement this
-        return null;
-    }
-
-    @Override
-    public List<Post> getAllPosts() {
-        //TODO - implement this
-        return null;
-    }
 
     @Override
     public boolean UsernameExist(String username) {

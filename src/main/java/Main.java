@@ -1,4 +1,5 @@
 import models.Model;
+import models.Player;
 import models.Sql2oModel;
 import org.apache.log4j.BasicConfigurator;
 import org.flywaydb.core.Flyway;
@@ -42,6 +43,15 @@ public class Main {
 
 
             return new ModelAndView(posts, "templates/home.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/battle", (req, res) ->{
+            Player player = new Player("Adam", 100,10,20,"true" );
+            HashMap battle = new HashMap();
+            battle.put("player", player);
+            System.out.println(battle.get("player"));
+            return new ModelAndView(battle, "templates/battle.vtl");
+
         }, new VelocityTemplateEngine());
 
         post("/sign_out", (req, res) ->{
