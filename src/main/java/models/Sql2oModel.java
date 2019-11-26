@@ -15,6 +15,7 @@ public class Sql2oModel implements Model {
 
     }
 
+
     @Override
     public boolean UsernameExist(String username) {
         boolean does_username_exists = false;
