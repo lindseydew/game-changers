@@ -11,6 +11,7 @@ import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,13 +38,19 @@ class Sql2oModelTest {
     @BeforeEach
     void setUp() {
         Connection conn = sql2o.beginTransaction();
+        conn.createQuery("insert into users(username, full_name, password) VALUES (:username, :full_name, :password)")
+                .addParameter("username", "example username")
+                .addParameter("full_name", "example full name")
+                .addParameter("password", "example password")
+                .executeUpdate();
+        conn.commit();
 
     }
 
     @AfterEach
     void tearDown() {
         Connection conn = sql2o.beginTransaction();
-        conn.createQuery("TRUNCATE TABLE players")
+        conn.createQuery("TRUNCATE TABLE players, users")
                 .executeUpdate();
         conn.commit();
     }
@@ -55,4 +62,35 @@ class Sql2oModelTest {
     @Test
     void getAllPosts() {
     }
+    @Test
+    void createUser() {
+        Connection conn = sql2o.open();
+        Model model = new Sql2oModel(sql2o);
+        boolean result = false;
+        model.createUser("example username2", "example full name2", "example password2");
+        List<Users> list_of_users;
+        list_of_users = (conn.createQuery("select * from users").executeAndFetch(Users.class));
+        String test = "Users(username=example username2, full_name=example full name2, password=example password2)";
+
+        if(list_of_users.toString().contains(test)){
+            result = true;
+        } else {
+            result = false;
+        }
+        assertTrue(result);
+    }
+
+    @Test
+    void UsernameExist() {
+        Model model = new Sql2oModel(sql2o);
+        assertTrue(model.UsernameExist("example username"));
+    }
+
+    @Test
+    void CorrectPassword(){
+        Model model = new Sql2oModel(sql2o);
+        assertTrue(model.CorrectPassword("example username","example password"));
+    }
+
+
 }
