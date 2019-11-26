@@ -90,7 +90,7 @@ class Sql2oModelTest {
         Player player = new Player("AdamR",100,10,20,"true", 0);
         assertEquals("AdamR", player.username);
         assertEquals(100, player.health);
-        assertEquals(10, player.damage);
+        assertEquals(10, player.damage_limit);
         assertEquals(20, player.defence);
         assertEquals("true", player.is_alive);
         assertEquals(0, player.coins);
