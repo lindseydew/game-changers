@@ -38,10 +38,12 @@ class Sql2oModelTest {
     @BeforeEach
     void setUp() {
         Connection conn = sql2o.beginTransaction();
-        conn.createQuery("insert into users(username, full_name, password) VALUES (:username, :full_name, :password)")
+        conn.createQuery("insert into players(user_id, user_name, name, password, high_score) VALUES (:user_id, :username, :full_name, :password, :high_score)")
+                .addParameter("user_id", id)
                 .addParameter("username", "example username")
                 .addParameter("full_name", "example full name")
                 .addParameter("password", "example password")
+                .addParameter("high_score", 0)
                 .executeUpdate();
         conn.commit();
 
@@ -50,29 +52,20 @@ class Sql2oModelTest {
     @AfterEach
     void tearDown() {
         Connection conn = sql2o.beginTransaction();
-        conn.createQuery("TRUNCATE TABLE players, users")
+        conn.createQuery("TRUNCATE TABLE players")
                 .executeUpdate();
         conn.commit();
     }
-
     @Test
-    void createPost() {
-    }
-
-    @Test
-    void getAllPosts() {
-    }
-    @Test
-    void createUser() {
+    void createPlayer() {
         Connection conn = sql2o.open();
         Model model = new Sql2oModel(sql2o);
         boolean result = false;
-        model.createUser("example username2", "example full name2", "example password2");
-        List<Users> list_of_users;
-        list_of_users = (conn.createQuery("select * from users").executeAndFetch(Users.class));
-        String test = "Users(username=example username2, full_name=example full name2, password=example password2)";
+        List<Players> list_of_players;
+        list_of_players = (conn.createQuery("select * from players").executeAndFetch(Players.class));
+        String test = "Players(user_ID=49921d6e-e210-4f68-ad7a-afac266278cb, user_name=example username, name=example full name, password=example password, high_score=0)";
 
-        if(list_of_users.toString().contains(test)){
+        if(list_of_players.toString().contains(test)){
             result = true;
         } else {
             result = false;

@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface Model {
-    UUID createPost(String title, String content);
-    List getAllPosts();
     boolean UsernameExist(String username);
     boolean CorrectPassword(String username, String password);
-    void createUser(String username, String full_name, String password);
+    void createPlayer(String user_id, String username, String full_name, String password, int high_score);
 }
 
 

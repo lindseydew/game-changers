@@ -16,23 +16,11 @@ public class Sql2oModel implements Model {
     }
 
     @Override
-    public UUID createPost(String title, String content) {
-        //TODO - implement this
-        return null;
-    }
-
-    @Override
-    public List<Post> getAllPosts() {
-        //TODO - implement this
-        return null;
-    }
-
-    @Override
     public boolean UsernameExist(String username) {
         boolean does_username_exists = false;
         try (Connection conn = sql2o.open()) {
-            List<Users> user1 = conn.createQuery("select username from users")
-                    .executeAndFetch(Users.class);
+            List<Players> user1 = conn.createQuery("select user_name from players")
+                    .executeAndFetch(Players.class);
             String user = user1.toString();
             if (user.contains(username)) {
                 does_username_exists = true;
@@ -46,11 +34,11 @@ public class Sql2oModel implements Model {
         boolean correct_password = false;
 
         try (Connection conn = sql2o.open()) {
-            List<Users> user = conn.createQuery("select password from users where username=:username")
-                    .addParameter("username", username)
-                    .executeAndFetch(Users.class);
-            password = "[Users(username=null, full_name=null, password=" + password + ")]";
-            if (user.toString().equals(password)) {
+            List<Players> player = conn.createQuery("select password from players where user_name=:user_name")
+                    .addParameter("user_name", username)
+                    .executeAndFetch(Players.class);
+            password =  "[Players(user_ID=null, user_name=null, name=null, password=" + password + ", high_score=0)]";
+            if (player.toString().equals(password)) {
                 correct_password = true;
             }
         }
@@ -58,12 +46,14 @@ public class Sql2oModel implements Model {
     }
 
     @Override
-    public void createUser(String username, String full_name, String password) {
+    public void createPlayer(String user_id, String username, String full_name, String password, int high_score) {
         try (Connection conn = sql2o.beginTransaction()) {
-            conn.createQuery("insert into users(username, full_name, password) VALUES (:username, :full_name, :password)")
-                    .addParameter("username", username)
-                    .addParameter("full_name", full_name)
-                    .addParameter("password", password)
+            conn.createQuery("insert into players(user_id, user_name, name, password, high_score) VALUES (:user_id, :user_name, :name, :password, :high_score)")
+                    .addParameter("user_id", user_id)
+                    .addParameter("user_name", "example username")
+                    .addParameter("name", "example full name")
+                    .addParameter("password", "example password")
+                    .addParameter("high_score", 0)
                     .executeUpdate();
             conn.commit();
         }
