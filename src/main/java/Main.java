@@ -140,7 +140,24 @@ public static Player player;
             battle.put("player", player);
             battle.put("username", username);
             return new ModelAndView(battle, "templates/shop.vtl");
-
         }, new VelocityTemplateEngine());
+
+        post("/health", (req, res) ->{
+            player.Heal();
+           res.redirect("/shop");
+           return null;
+        });
+
+        post("/damage", (req, res) ->{
+            player.increase_damage();
+            res.redirect("/shop");
+            return null;
+        });
+
+        post("/defence", (req, res) ->{
+            player.increase_defence();
+            res.redirect("/shop");
+            return null;
+        });
     }
 }
