@@ -38,6 +38,15 @@ position:absolute;
   font-size: 18px;
 
 }
+#battle{
+position:absolute;
+  left: 25%;
+  top: 80%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+
+}
 
     div {
       margin: auto;
