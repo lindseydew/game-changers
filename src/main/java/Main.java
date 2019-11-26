@@ -37,12 +37,18 @@ public class Main {
 
 
         get("/home", (req, res) -> {
+            String username = req.session().attribute("user");
+            String signedIn = req.session().attribute("Signed_In?");
+            if(signedIn == "true"){
+                req.session().attribute("user", username);
+            }else{
+                req.session().attribute("user", "Prepare for carnage");
+                username = req.session().attribute("user");
+            }
+            HashMap players = new HashMap();
+            players.put("username", username);
 
-
-            HashMap posts = new HashMap();
-
-
-            return new ModelAndView(posts, "templates/home.vtl");
+            return new ModelAndView(players, "templates/home.vtl");
         }, new VelocityTemplateEngine());
 
         get("/battle", (req, res) ->{
@@ -65,9 +71,9 @@ public class Main {
             return new ModelAndView(signup, "templates/sign_up.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/signed", (req, res) -> {
+        get("/signed_up", (req, res) -> {
             HashMap signed = new HashMap();
-            return new ModelAndView(signed, "templates/signed.vtl");
+            return new ModelAndView(signed, "templates/signed_up.vtl");
         }, new VelocityTemplateEngine());
 
         post("/signed", (req, res) -> {
@@ -79,25 +85,26 @@ public class Main {
             String username = req.queryParams("username");
             String fullname = req.queryParams("full_name");
             String password = req.queryParams("password");
-//            model.createUser(username, fullname, password);
-            res.redirect("/signed");
+            UUID playerUuid = UUID.randomUUID();
+            model.createPlayer(playerUuid.toString(), username, fullname, password, 0);
+            res.redirect("/signed_up");
             return null;
         });
 
         get("/sign_in", (req, res) -> {
             HashMap signin = new HashMap();
-            return new ModelAndView(signin, "templates/signin.vtl");
+            return new ModelAndView(signin, "templates/sign_in.vtl");
         }, new VelocityTemplateEngine());
 
         post("/signed_in", (req, res) -> {
             String username = req.queryParams("username");
             String password = req.queryParams("password");
 
-//            if(model.CorrectPassword(username, password)){
-//                res.redirect("/signedin");
-//            } else {
-//                res.redirect("/signin");
-//            };
+            if(model.CorrectPassword(username, password)){
+                res.redirect("/signed_in");
+            } else {
+                res.redirect("/sign_in");
+            };
 
             req.session().attribute("user",username);
             req.session().attribute("Signed_In?","true");
@@ -105,19 +112,26 @@ public class Main {
             return null;
         });
 
-        get("/signedin", (req, res) -> {
+        get("/signed_in", (req, res) -> {
             HashMap signedin = new HashMap();
-            return new ModelAndView(signedin, "templates/signedin.vtl");
+            return new ModelAndView(signedin, "templates/signed_in.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/signin", (req, res) -> {
-            res.redirect("/signin");
+        post("/sign_in", (req, res) -> {
+            res.redirect("/sign_in");
             return null;
         });
-        post("/signup", (req, res) -> {
-            res.redirect("/signup");
+
+        post("/sign_up", (req, res) -> {
+            res.redirect("/sign_up");
             return null;
         });
+
+        post("/home", (req, res) -> {
+            res.redirect("/home");
+            return null;
+        });
+
 
     }
 }
