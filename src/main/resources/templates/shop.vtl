@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Makers and Mortals</title>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="/stylesheet.css" >
+  </head>
+  <body>
+  <style>
+   div {
+        margin: auto;
+        background-image: url("shelf.png");
+        background-repeat: no-repeat;
+        background-size: 700px 500px;
+        border-radius: 20px;
+        padding: 365px;
+        width: 200px;
+        height: 100px;
+
+      }
+  </style>
+    <h1>Welcome to the Shop, $username</h1>
+        <h2>What would you like to increase?</h2>
+        <h3>Your Balance: $player.coins | Health: $player.health HP | Damage: $player.damage_limit | Defence: $player.defence</h3>
+<div>
+                   <form action="/health" method="POST">
+                     <input class="btn btn-secondary" type="submit" id="health" value="Health">
+                   </form>
+
+                   <form action="/damage" method="POST">
+                     <input class="btn btn-secondary" type="submit" id="damage" value="Damage">
+                   </form>
+
+                    <form action="/defence" method="POST">
+                      <input class="btn btn-secondary" type="submit" id="defence" value="Defence">
+                    </form>
+</div>
+  </body>
+</html>

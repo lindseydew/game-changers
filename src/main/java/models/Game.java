@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class Game {
 
+
     public List<Player> playersArray;
 
 
@@ -25,4 +26,5 @@ public class Game {
         public double random_damage(Player player){
             return (Math.random() * ((player.damage_limit - 5) + 1)) + 5;
         }
+
 }

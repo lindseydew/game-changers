@@ -17,6 +17,7 @@ import static spark.Spark.post;
 
 public class Main {
 
+
     public static Player player = new Player("Adam", 100,10,20,"true", 0 );
     public static Player enemy = new Player("Ork", 80,20,10,"true", 0  );
     public static Game game = new Game(player, enemy);
@@ -143,6 +144,31 @@ public class Main {
             return null;
         });
 
+        get("/shop", (req, res) ->{
+            //Player player = new Player("Adam", 100,10,20,"true", 0 );
+            String username = req.session().attribute("user");
+            HashMap battle = new HashMap();
+            battle.put("player", player);
+            battle.put("username", username);
+            return new ModelAndView(battle, "templates/shop.vtl");
+        }, new VelocityTemplateEngine());
 
+        post("/health", (req, res) ->{
+            player.Heal();
+           res.redirect("/shop");
+           return null;
+        });
+
+        post("/damage", (req, res) ->{
+            player.increase_damage();
+            res.redirect("/shop");
+            return null;
+        });
+
+        post("/defence", (req, res) ->{
+            player.increase_defence();
+            res.redirect("/shop");
+            return null;
+        });
     }
 }

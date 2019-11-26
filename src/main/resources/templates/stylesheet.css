@@ -1,5 +1,5 @@
 body {
-background-image: url("334bd5802c7c7f655fd6eb1d63384199.jpg");
+background-image: url("MossyStoneBrick.jpg");
 }
 
 #home {
@@ -38,6 +38,15 @@ position:absolute;
   font-size: 18px;
 
 }
+#battle{
+position:absolute;
+  left: 25%;
+  top: 80%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+
+}
 
     div {
       margin: auto;
@@ -48,5 +57,34 @@ position:absolute;
       height: 100px;
 
     }
+
+#health{
+position:absolute;
+  left: 33%;
+  top: 30%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
+#damage{
+position:absolute;
+  left: 33%;
+  top: 49%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+#defence{
+position:absolute;
+  left: 33%;
+  top: 67%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
 
 
