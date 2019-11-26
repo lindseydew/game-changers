@@ -3,31 +3,33 @@
   <head>
 
     <title>Makers and Mortals</title>
-    <link rel="stylesheet" href="/stylesheet.css" >
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="/stylesheet.css" >
   </head>
   <body>
     <h1>Welcome to Makers and Mortals, $username</h1>
- <ul>
-                  <li>
+
+<div>
                    <form action="/home" method="POST">
-                     <input class="navigation" type="submit" name="home" value="Home">
+                     <input class="btn btn-secondary" type="submit" id="home" value="Home">
                    </form>
-                  </li>
-                 <li>
+
                    <form action="/sign_in" method="POST">
-                     <input class="navigation" type="submit" name="sign_in" value="Sign in">
+                     <input class="btn btn-secondary" type="submit" id="sign_in" value="Sign in">
                    </form>
-                  </li>
-                  <li>
+
                     <form action="/sign_up" method="POST">
-                      <input class="navigation" type="submit" name="sign_up" value="Sign Up">
+                      <input class="btn btn-secondary" type="submit" id="sign_up" value="Sign Up">
                     </form>
-                  </li>
-                  <li>
+
                     <form action="/sign_out" method="POST">
-                      <input class="navigation" type="submit" name="sign_out" value="Sign out">
+                      <input class="btn btn-secondary" type="submit" id="sign_out" value="Sign out">
                     </form>
-                  </li>
-    </ul>
+                    </div>
   </body>
 </html>

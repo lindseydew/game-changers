@@ -1,3 +1,52 @@
 body {
-background-color: #4d4d4d;
+background-image: url("334bd5802c7c7f655fd6eb1d63384199.jpg");
 }
+
+#home {
+position:absolute;
+  left: 25%;
+  top: 40%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+}
+#sign_in{
+position:absolute;
+  left: 25%;
+  top: 50%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+
+}
+#sign_up{
+
+position:absolute;
+  left: 25%;
+  top: 60%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+
+}
+#sign_out{
+position:absolute;
+  left: 25%;
+  top: 70%;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+    div {
+      margin: auto;
+      background-image: url("wood.png");
+      border-radius: 20px;
+      padding: 365px;
+      width: 200px;
+      height: 100px;
+
+    }
+
+
