@@ -58,4 +58,33 @@ position:absolute;
 
     }
 
+#health{
+position:absolute;
+  left: 33%;
+  top: 30%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
+#damage{
+position:absolute;
+  left: 33%;
+  top: 49%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+#defence{
+position:absolute;
+  left: 33%;
+  top: 67%;
+  width: 30%;
+  text-align: center;
+  font-size: 18px;
+
+}
+
 
