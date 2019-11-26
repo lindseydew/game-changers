@@ -56,6 +56,7 @@ public class Main {
             HashMap battle = new HashMap();
             battle.put("player", player);
             System.out.println(battle.get("player"));
+            System.out.println(Math.round(Math.floor(player.random_damage())));
             return new ModelAndView(battle, "templates/battle.vtl");
 
         }, new VelocityTemplateEngine());
