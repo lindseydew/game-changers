@@ -15,7 +15,7 @@ import static spark.Spark.*;
 import static spark.Spark.post;
 
 public class Main {
-
+public static Player player;
     public static void main(String[] args) {
         BasicConfigurator.configure();
         staticFileLocation("/templates");
@@ -52,7 +52,7 @@ public class Main {
         }, new VelocityTemplateEngine());
 
         get("/battle", (req, res) ->{
-            Player player = new Player("Adam", 100,10,20,"true", 0 );
+            player = new Player("Adam", 100,10,20,"true", 0 );
             HashMap battle = new HashMap();
             battle.put("player", player);
             System.out.println(battle.get("player"));
@@ -133,6 +133,14 @@ public class Main {
             return null;
         });
 
+        get("/shop", (req, res) ->{
+            //Player player = new Player("Adam", 100,10,20,"true", 0 );
+            String username = req.session().attribute("user");
+            HashMap battle = new HashMap();
+            battle.put("player", player);
+            battle.put("username", username);
+            return new ModelAndView(battle, "templates/shop.vtl");
 
+        }, new VelocityTemplateEngine());
     }
 }
