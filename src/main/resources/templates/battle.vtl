@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+          <link rel="stylesheet" href="/stylesheet.css" >
   </head>
   <body>
     <h1>Welcome to the Makers and Mortals</h1>
@@ -9,11 +15,16 @@
             <p2>
                 <p>$player.username</p><br>
                 <p>$player.health </p> <br>
-                <p>$player.damage </p><br>
+                <p>$player.damage_limit</p><br>
                 <p>$player.defence</p><br>
                 <p>$player.is_alive</p><br>
                 <br>
             </p2>
     </section>
+
+     <form action="/shop" method="GET">
+        <input class="btn btn-secondary" type="submit" id="shop" value="Shop">
+     </form>
+
   </body>
 </html>
