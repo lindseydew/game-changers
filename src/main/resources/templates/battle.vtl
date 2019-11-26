@@ -2,18 +2,56 @@
 <html>
   <head>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+    <style>
+        body {
+            background-image: url("334bd5802c7c7f655fd6eb1d63384199.jpg");
+            color: white;
+        }
+        .jumbotron {
+            background-image: url("wood2.jpg");
+        }
+        h1 {
+            color: white;
+        }
+        h2 {
+            color: white;
+        }
+    </style>
+
   </head>
   <body>
-    <h1>Welcome to the Makers and Mortals</h1>
-    <section>
-            <p2>
-                <p>$player.username</p><br>
-                <p>$player.health </p> <br>
-                <p>$player.damage </p><br>
-                <p>$player.defence</p><br>
-                <p>$player.is_alive</p><br>
-                <br>
-            </p2>
-    </section>
+    <div class="jumbotron">
+    <h1><u>Welcome to the Makers and Mortals</u></h1>
+    </div>
+      <div class="container">
+        <section>
+            <h2><u>Player</u><h2>
+                <p2>
+                <ul>
+                    <p>Player: $player.username</p>
+                    <p>HP: $player.health </p>
+                    <p>Damage: $player.damage_limit </p>
+                    <p>Defence: $player.defence</p>
+                    <form action="/attack" method="POST">
+                         <input class="btn btn-danger btn-lg" type="submit" id="playerAttack" value="Attack">
+                    </form>
+                </ul>
+                </p2>
+        </section>
+      </div>
+      <div class="container">
+        <section>
+            <h2><u>Enemy</u><h2>
+                <p2>
+                <ul>
+                    <p>Enemy: $enemy.username</p>
+                    <p>HP: $enemy.health </p>
+                    <p>Damage: $enemy.damage_limit </p>
+                    <p>Defence: $enemy.defence</p>
+                </ul>
+                </p2>
+        </section>
+      </div>
   </body>
 </html>
