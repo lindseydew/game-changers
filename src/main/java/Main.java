@@ -1,3 +1,4 @@
+import models.Game;
 import models.Model;
 import models.Player;
 import models.Sql2oModel;
@@ -15,7 +16,12 @@ import static spark.Spark.*;
 import static spark.Spark.post;
 
 public class Main {
-public static Player player;
+
+
+    public static Player player = new Player("Adam", 100,10,20,"true", 0 );
+    public static Player enemy = new Player("Ork", 80,20,10,"true", 0  );
+    public static Game game = new Game(player, enemy);
+
     public static void main(String[] args) {
         BasicConfigurator.configure();
         staticFileLocation("/templates");
@@ -52,14 +58,19 @@ public static Player player;
         }, new VelocityTemplateEngine());
 
         get("/battle", (req, res) ->{
-            player = new Player("Adam", 100,10,20,"true", 0 );
             HashMap battle = new HashMap();
             battle.put("player", player);
-            System.out.println(battle.get("player"));
-            System.out.println(Math.round(Math.floor(player.random_damage())));
+            battle.put("enemy", enemy);
+            // System.out.println(battle.get("player"));
+            // System.out.println(Math.round(Math.floor(game.random_damage())));
             return new ModelAndView(battle, "templates/battle.vtl");
-
         }, new VelocityTemplateEngine());
+
+        post("/attack", (req, res) ->{
+            game.attack(enemy);
+            res.redirect("/battle");
+            return null;
+        });
 
         post("/sign_out", (req, res) ->{
             req.session().attribute("Signed_In?", "false");

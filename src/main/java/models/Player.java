@@ -45,6 +45,7 @@ public class Player {
     public void increase_defence(){
         defence = defence + 5;
     }
+
 }
 
 

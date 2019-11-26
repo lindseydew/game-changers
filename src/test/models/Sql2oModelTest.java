@@ -11,6 +11,7 @@ import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,7 +57,7 @@ class Sql2oModelTest {
                 .executeUpdate();
         conn.commit();
     }
-    @Test
+    @org.junit.jupiter.api.Test
     void createPlayer() {
         Connection conn = sql2o.open();
         Model model = new Sql2oModel(sql2o);
@@ -73,19 +74,19 @@ class Sql2oModelTest {
         assertTrue(result);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void UsernameExist() {
         Model model = new Sql2oModel(sql2o);
         assertTrue(model.UsernameExist("example username"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void CorrectPassword(){
         Model model = new Sql2oModel(sql2o);
         assertTrue(model.CorrectPassword("example username","example password"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void CreatePlayer() {
         Player player = new Player("AdamR",100,10,20,"true", 0);
         assertEquals("AdamR", player.username);
@@ -96,5 +97,33 @@ class Sql2oModelTest {
         assertEquals(0, player.coins);
     }
 
+    @org.junit.jupiter.api.Test
+    void testPlayerAndEnemyCreated() {
+        Player player = new Player("AdamR",100,10,20,"true", 0);
+        Player enemy = new Player("Ork", 80,20,10,"true", 0  );
+        List<Player> testarray = new ArrayList<Player>();
+        testarray.add(player);
+        testarray.add(enemy);
+        Game game = new Game(player , enemy);
+        assertEquals(testarray, game.playersArray);
+    }
+
+    @org.junit.jupiter.api.Test
+    void attackingPlayer() {
+        Player player = new Player("AdamR", 100, 10, 20, "true", 0);
+        Player enemy = new Player("Ork", 80, 20, 10, "true", 0);
+        Game game = new Game(player , enemy);
+        game.attack(player);
+        assertNotEquals(100 , player.health);
+    }
+
+    @org.junit.jupiter.api.Test
+    void attackingEnemy() {
+        Player player = new Player("AdamR", 100, 10, 20, "true", 0);
+        Player enemy = new Player("Ork", 80, 20, 10, "true", 0);
+        Game game = new Game(player , enemy);
+        game.attack(enemy);
+        assertNotEquals(100 , enemy.health);
+    }
 
 }
