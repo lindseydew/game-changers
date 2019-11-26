@@ -28,6 +28,8 @@ class Sql2oModelTest {
     });
 
     UUID id = UUID.fromString("49921d6e-e210-4f68-ad7a-afac266278cb");
+    Player player = new Player("AdamR", 100, 10, 20, "true", 0);
+    Player enemy = new Player("Ork", 80, 20, 10, "true", 0);
 
     @BeforeAll
     static void setUpClass() {
@@ -58,7 +60,7 @@ class Sql2oModelTest {
         conn.commit();
     }
     @org.junit.jupiter.api.Test
-    void createPlayer() {
+    void createUser() {
         Connection conn = sql2o.open();
         Model model = new Sql2oModel(sql2o);
         boolean result = false;
@@ -88,7 +90,6 @@ class Sql2oModelTest {
 
     @org.junit.jupiter.api.Test
     void CreatePlayer() {
-        Player player = new Player("AdamR",100,10,20,"true", 0);
         assertEquals("AdamR", player.username);
         assertEquals(100, player.health);
         assertEquals(10, player.damage_limit);
@@ -99,8 +100,6 @@ class Sql2oModelTest {
 
     @org.junit.jupiter.api.Test
     void testPlayerAndEnemyCreated() {
-        Player player = new Player("AdamR",100,10,20,"true", 0);
-        Player enemy = new Player("Ork", 80,20,10,"true", 0  );
         List<Player> testarray = new ArrayList<Player>();
         testarray.add(player);
         testarray.add(enemy);
@@ -110,8 +109,6 @@ class Sql2oModelTest {
 
     @org.junit.jupiter.api.Test
     void attackingPlayer() {
-        Player player = new Player("AdamR", 100, 10, 20, "true", 0);
-        Player enemy = new Player("Ork", 80, 20, 10, "true", 0);
         Game game = new Game(player , enemy);
         game.attack(player);
         assertNotEquals(100 , player.health);
@@ -119,11 +116,27 @@ class Sql2oModelTest {
 
     @org.junit.jupiter.api.Test
     void attackingEnemy() {
-        Player player = new Player("AdamR", 100, 10, 20, "true", 0);
-        Player enemy = new Player("Ork", 80, 20, 10, "true", 0);
         Game game = new Game(player , enemy);
         game.attack(enemy);
         assertNotEquals(100 , enemy.health);
+    }
+
+    @org.junit.jupiter.api.Test
+    void shopHealth() {
+        player.Heal();
+        assertEquals(110, player.health);
+    }
+
+    @org.junit.jupiter.api.Test
+    void shopDamage() {
+        player.increase_damage();
+        assertEquals(15, player.damage_limit);
+    }
+
+    @org.junit.jupiter.api.Test
+    void shopDefence() {
+        player.increase_defence();
+        assertEquals(25, player.defence);
     }
 
 }

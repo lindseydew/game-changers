@@ -24,7 +24,8 @@ public class Game {
         }
 
         public double random_damage(Player player){
-            return (Math.random() * ((player.damage_limit - 5) + 1)) + 5;
+            System.out.println(Math.random() * ((player.damage_limit)));
+            return (Math.random() * ((player.damage_limit)));
         }
 
 }
