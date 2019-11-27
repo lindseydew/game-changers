@@ -29,6 +29,9 @@
         <section>
             <h2><u>Player</u><h2>
                 <p2>
+                #if($player.is_alive.equals("false"))
+                    <p>Player Defeated</p>
+                #else
                 <ul>
                     <p>Player: $player.username</p>
                     <p>HP: $player.health </p>
@@ -38,6 +41,7 @@
                          <input class="btn btn-danger btn-lg" type="submit" id="playerAttack" value="Attack">
                     </form>
                 </ul>
+                #end
                 </p2>
         </section>
       </div>
@@ -45,12 +49,16 @@
         <section>
             <h2><u>Enemy</u><h2>
                 <p2>
+                #if($enemy.is_alive.equals("false"))
+                    <p>Player Won</p>
+                #else
                 <ul>
                     <p>Enemy: $enemy.username</p>
                     <p>HP: $enemy.health </p>
                     <p>Damage: $enemy.damage_limit </p>
                     <p>Defence: $enemy.defence</p>
                 </ul>
+                #end
                 </p2>
         </section>
       </div>
