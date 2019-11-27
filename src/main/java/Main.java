@@ -41,7 +41,10 @@ public class Main {
         Model model = new Sql2oModel(sql2o);
 
 
-        get("/", (req, res) -> "Hello World");
+        get("/", (req, res) -> {
+          res.redirect("/home");
+          return null;
+        });
 
 
         get("/home", (req, res) -> {
