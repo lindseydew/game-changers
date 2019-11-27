@@ -68,6 +68,7 @@ public class Main {
 
         post("/attack", (req, res) ->{
             game.attack(player, enemy);
+            game.enemy_attack(player, enemy);
             res.redirect("/battle");
             return null;
         });
