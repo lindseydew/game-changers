@@ -27,15 +27,24 @@ public class Player {
     }
 
     public void Heal(){
-        health = health + 10;
+        if (coins >= 10){
+            health = health + 10;
+            coins = coins - 10;
+        }
     }
 
     public void increase_damage(){
-        damage_limit = damage_limit + 5;
+        if (coins >= 10){
+            damage_limit = damage_limit + 5;
+            coins = coins - 10;
+        }
     }
 
     public void increase_defence(){
-        defence = defence + 5;
+        if (coins >= 10){
+            defence = defence + 5;
+            coins = coins - 10;
+        }
     }
 
 }
