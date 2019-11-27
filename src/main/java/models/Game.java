@@ -5,6 +5,7 @@ import lombok.Data;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Data
 public class Game {
@@ -19,13 +20,14 @@ public class Game {
             playersArray.add(enemy);
         }
 
-        public void attack(Player player){
-            player.recieve_damage(Math.round(Math.floor(this.random_damage(player))));
+        public void attack(Player player, Player enemy){
+            enemy.recieve_damage(Math.round(Math.floor(this.random_damage(player))));
         }
 
         public double random_damage(Player player){
-            System.out.println(Math.random() * ((player.damage_limit)));
-            return (Math.random() * ((player.damage_limit)));
+            Random rand = new Random();
+            int random = (int)(Math.random() * player.damage_limit + 1);
+            return (random);
         }
 
 }

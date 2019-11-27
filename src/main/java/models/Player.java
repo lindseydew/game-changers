@@ -26,14 +26,6 @@ public class Player {
         health -= damage;
     }
 
-    public void attack(Player player){
-        player.recieve_damage(Math.round(Math.floor(player.random_damage())));
-    }
-
-    public double random_damage(){
-        return (Math.random() * ((damage_limit - 5) + 1)) + 5;
-    }
-
     public void Heal(){
         health = health + 10;
     }

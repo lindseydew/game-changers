@@ -110,14 +110,14 @@ class Sql2oModelTest {
     @org.junit.jupiter.api.Test
     void attackingPlayer() {
         Game game = new Game(player , enemy);
-        game.attack(player);
+        game.attack(enemy, player);
         assertNotEquals(100 , player.health);
     }
 
     @org.junit.jupiter.api.Test
     void attackingEnemy() {
         Game game = new Game(player , enemy);
-        game.attack(enemy);
+        game.attack(player, enemy);
         assertNotEquals(100 , enemy.health);
     }
 

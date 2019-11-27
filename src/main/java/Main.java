@@ -67,7 +67,7 @@ public class Main {
         }, new VelocityTemplateEngine());
 
         post("/attack", (req, res) ->{
-            game.attack(enemy);
+            game.attack(player, enemy);
             res.redirect("/battle");
             return null;
         });
