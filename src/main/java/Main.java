@@ -18,8 +18,8 @@ import static spark.Spark.post;
 public class Main {
 
 
-    public static Player player = new Player("Adam", 100,10,20,"true", 0 );
-    public static Player enemy = new Player("Ork", 80,20,10,"true", 0  );
+    public static Player player = new Player("Adam", 100,10,20,"true", 100, 0);
+    public static Player enemy = new Player("Ork", 80,20,10,"true", 0 , 0 );
     public static Game game = new Game(player, enemy);
 
     public static void main(String[] args) {
@@ -157,6 +157,12 @@ public class Main {
             player.Heal();
            res.redirect("/shop");
            return null;
+        });
+
+        post("/healthPotion", (req, res) ->{
+            player.AddHealthPotion();
+            res.redirect("/shop");
+            return null;
         });
 
         post("/damage", (req, res) ->{

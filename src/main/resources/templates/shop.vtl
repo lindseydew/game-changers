@@ -13,24 +13,22 @@
   </head>
   <body>
   <style>
-   div {
-        margin: auto;
-        background-image: url("shelf.png");
-        background-repeat: no-repeat;
-        background-size: 700px 500px;
-        border-radius: 20px;
-        padding: 365px;
-        width: 200px;
-        height: 100px;
 
-      }
+
+
   </style>
     <h1>Welcome to the Shop, $username</h1>
         <h2>What would you like to increase?</h2>
         <h3>Your Balance: $player.coins | Health: $player.health HP | Damage: $player.damage_limit | Defence: $player.defence</h3>
-<div>
+        <h3>Your inventory: Health Potions: $player.healthPotions</h3>
+
+<div class="shelf">
                    <form action="/health" method="POST">
                      <input class="btn btn-secondary" type="submit" id="health" value="Health - Costs: 10 coins">
+                   </form>
+
+                   <form action="/healthPotion" method="POST">
+                     <input type="image" src="health_potion.png" alt="Submit" width="80" height="100" id="healthpotion">
                    </form>
 
                    <form action="/damage" method="POST">
@@ -41,5 +39,7 @@
                       <input class="btn btn-secondary" type="submit" id="defence" value="Defence - Costs: 10 coins">
                     </form>
 </div>
+<div class="hpotiontext">Health Potion <br> Costs: 20 coins</div>
   </body>
+
 </html>

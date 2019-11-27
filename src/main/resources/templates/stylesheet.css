@@ -48,21 +48,22 @@ position:absolute;
 
 }
 
-    div {
+    .wood {
       margin: auto;
       background-image: url("wood2.jpg");
       border-radius: 20px;
       padding: 365px;
       width: 200px;
       height: 100px;
+      text-align: right;
 
     }
 
 #health{
 position:absolute;
-  left: 33%;
-  top: 30%;
-  width: 30%;
+  left: 32%;
+  top: 33%;
+  width: 16%;
   text-align: center;
   font-size: 18px;
 
@@ -70,7 +71,7 @@ position:absolute;
 #damage{
 position:absolute;
   left: 33%;
-  top: 49%;
+  top: 56%;
   width: 30%;
   text-align: center;
   font-size: 18px;
@@ -80,11 +81,39 @@ position:absolute;
 #defence{
 position:absolute;
   left: 33%;
-  top: 67%;
+  top: 74%;
   width: 30%;
   text-align: center;
   font-size: 18px;
 
 }
 
+#healthpotion{
+position:absolute;
+   left: 60 %;
+   top: 33%;
+   text-align: center;
+   font-size: 18px;
+
+}
+
+.hpotiontext {
+      position: absolute;
+      font-size: 18px;
+      left: 56%;
+      top: 33%;
+      color: #ffffff;
+}
+
+.shelf {
+       margin: auto;
+       background-image: url("shelf.png");
+       background-repeat: no-repeat;
+       background-size: 700px 500px;
+       border-radius: 20px;
+       padding: 365px;
+       width: 200px;
+       height: 100px;
+
+}
 
