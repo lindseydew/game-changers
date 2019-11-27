@@ -24,6 +24,13 @@ public class Player {
 
     public void recieve_damage(double damage){
         health -= damage;
+        is_character_alive();
+    }
+
+    public void is_character_alive() {
+        if (health <= 0) {
+            is_alive = "false";
+        }
     }
 
     public void Heal(){
