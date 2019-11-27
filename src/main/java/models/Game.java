@@ -24,9 +24,13 @@ public class Game {
             enemy.recieve_damage(Math.round(Math.floor(this.random_damage(player))));
         }
 
-        public double random_damage(Player player){
+        public void enemy_attack(Player player, Player enemy){
+            player.recieve_damage(Math.round(Math.floor(this.random_damage(enemy))));
+        }
+
+        public double random_damage(Player character){
             Random rand = new Random();
-            int random = (int)(Math.random() * player.damage_limit + 1);
+            int random = (int)(Math.random() * character.damage_limit + 1);
             return (random);
         }
 

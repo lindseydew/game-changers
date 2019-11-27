@@ -140,4 +140,9 @@ class Sql2oModelTest {
         assertEquals(25, player.defence);
     }
 
+    @org.junit.jupiter.api.Test
+    void playerWin() {
+
+    }
+
 }

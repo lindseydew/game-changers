@@ -26,9 +26,14 @@
     <h1><u>Welcome to the Makers and Mortals</u></h1>
     </div>
       <div class="container">
-        <section>
-            <h2><u>Player</u><h2>
-                <p2>
+       <div class="clearfix">
+        <h2><u>Player</u><h2>
+        <p> Coins: $player.coins </p>
+          <p2>
+            #if($player.is_alive.equals("false"))
+                <p>Player Defeated</p>
+            #else
+              <img class="pull-right" alt="knight_image" width="200" height="200" src="knight.jpg"/>
                 <ul>
                     <p>Player: $player.username</p>
                     <p>HP: $player.health </p>
@@ -38,21 +43,28 @@
                          <input class="btn btn-danger btn-lg" type="submit" id="playerAttack" value="Attack">
                     </form>
                 </ul>
-                </p2>
-        </section>
+            #end
+          </p2>
+       </div>
       </div>
+
       <div class="container">
-        <section>
+        <div class="clearfix">
             <h2><u>Enemy</u><h2>
-                <p2>
-                <ul>
-                    <p>Enemy: $enemy.username</p>
-                    <p>HP: $enemy.health </p>
-                    <p>Damage: $enemy.damage_limit </p>
-                    <p>Defence: $enemy.defence</p>
-                </ul>
-                </p2>
-        </section>
+              <p2>
+                #if($enemy.is_alive.equals("false"))
+                    <p>Player Won</p>
+                #else
+                  <img class="pull-right" alt="ork_image" width="200" height="200" src="enemy_ork.jpg"/>
+                    <ul>
+                        <p>Enemy: $enemy.username</p>
+                        <p>HP: $enemy.health </p>
+                        <p>Damage: $enemy.damage_limit </p>
+                        <p>Defence: $enemy.defence</p>
+                    </ul>
+                #end
+              </p2>
+        </div>
       </div>
 
      <form action="/shop" method="GET">

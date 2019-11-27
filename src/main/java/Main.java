@@ -18,8 +18,10 @@ import static spark.Spark.post;
 public class Main {
 
 
+
     public static Player player = new Player("Adam", 100,10,20,"true", 100, 0);
     public static Player enemy = new Player("Ork", 80,20,10,"true", 0 , 0 );
+
     public static Game game = new Game(player, enemy);
 
     public static void main(String[] args) {
@@ -61,13 +63,13 @@ public class Main {
             HashMap battle = new HashMap();
             battle.put("player", player);
             battle.put("enemy", enemy);
-            // System.out.println(battle.get("player"));
-            // System.out.println(Math.round(Math.floor(game.random_damage())));
             return new ModelAndView(battle, "templates/battle.vtl");
         }, new VelocityTemplateEngine());
 
+
         post("/attack", (req, res) ->{
             game.attack(player, enemy);
+            game.enemy_attack(player, enemy);
             res.redirect("/battle");
             return null;
         });
