@@ -11,14 +11,16 @@ public class Player {
     public int defence;
     public String is_alive;
     public int coins;
+    public int healthPotions;
 
-    public Player(String username, int health, int damage_limit, int defence, String is_alive, int coins) {
+    public Player(String username, int health, int damage_limit, int defence, String is_alive, int coins, int healthPotions) {
         this.username = username;
         this.health = health;
         this.damage_limit = damage_limit;
         this.defence = defence;
         this.is_alive = is_alive;
         this.coins = coins;
+        this.healthPotions = healthPotions;
     }
 
 
@@ -37,6 +39,13 @@ public class Player {
         if (coins >= 10){
             health = health + 10;
             coins = coins - 10;
+        }
+    }
+
+    public void AddHealthPotion(){
+        if (coins >= 20){
+            healthPotions = healthPotions + 1;
+            coins = coins - 20;
         }
     }
 
