@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Game;
 import models.Model;
 import models.Player;
@@ -68,6 +69,17 @@ public class Main {
             battle.put("enemy", enemy);
             return new ModelAndView(battle, "templates/battle.vtl");
         }, new VelocityTemplateEngine());
+
+
+        get("/battleJson", (req, res) -> {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            String json = objectMapper.writeValueAsString(game);
+
+
+            return json;
+        });
 
 
         post("/attack", (req, res) ->{
